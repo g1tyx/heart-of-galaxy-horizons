@@ -1,0 +1,515 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		<script>
+			var NEW_AUTOROUTES = false;
+			var staticBon = 1;
+			var dynamicBon = 1;
+			var distanceBon = 1;
+			var MOBILE_LANDSCAPE = false;
+			var MIN_TEXT_SIZE = 0.5;
+			var MAX_TEXT_SIZE = 1.5;
+			var DEFAULT_TEXT_SIZE = 1.1;
+			
+			var SHARED_RESOURCES = false;
+			var staticBon = 1; 
+			var dynamicBon = 1; 
+			var distanceBon = 1;
+			var dynamicTechBon = 1;
+			var dynamicResearchBon = 1;
+			var bodyTextPct = 90;
+			var POPUP_VERTICAL = true;
+			var IDLE_BONUS_ENABLED = true;
+			var AG_SAVE = false;
+		</script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="core/style/style.css">
+        <link rel="stylesheet" href="core/script/malihu/jquery.mCustomScrollbar.css" />
+        <script type="text/javascript" src="core/script/jquery.min.js"></script>
+        <script src="core/script/malihu/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+        <script type="text/javascript" src="core/script/change_log.js"></script>
+        <script type="text/javascript" src="core/script/cfg.js"></script>
+		<script>var AG_GAME = false;</script>
+        <script type="text/javascript" src="core/script/sall.js"></script>
+        <title>Heart of Galaxy</title>
+    </head>
+    <body id="hog_game_body" ondragstart="return false;" ondrop="return false;">
+		<div id="main" style="background-image: url('ui/gridBackground.png');">
+			<div id="ver_info">
+			</div>
+		
+			<div id="popup_container">
+				<div id="popup" class='menu'>
+					<img id="line_top" src="ui/line.png" />
+					<div id="popup_content">
+					</div>
+					<img id="line_down" src="ui/line.png" />
+				</div>
+			</div>
+			
+			<div id="popup_info" class='menu_dark'>
+				<img id="line_top_info" src="ui/line.png" />
+				<div id="popup_info_content">
+				</div>
+				<img id="line_down_info" src="ui/line.png" />
+			</div>
+			
+			<div id="popup_display" class='menu_dark' style='position:absolute;bottom:10%;'>
+				<div id="popup_display_content">
+				</div>
+			</div>
+			
+			
+			
+			<div id="popup_container_toast">
+				<div id="popup_toast" class='menu'>
+					<div id="popup_content_toast">
+					</div>
+				</div>
+			</div>
+			<div id="popup_info_toast" class='menu_dark'>
+				<div id="popup_info_content_toast">
+				</div>
+			</div>
+			<div id="popup_display_toast" class='menu_dark' style='position:absolute;bottom:10%;'>
+				<div id="popup_display_content_toast">
+				</div>
+			</div>
+			
+			
+			<div id ="loading_screen">
+				<img id="splash" src="ui/splash.png" style="position:absolute;top:0px;left:0px;border:none;margin:0px;z-index:-1"/>
+				<div id="loading_bar"></div>
+				<div id="loading_background"></div>
+				<div id="loading_info"><span id="l_info" class="yellow_text yellow_text_shadow" style="font-size: 90%;">Initializing game...</span></div>
+				<div id="version"><span class="yellow_text yellow_text_shadow" style="font-size: 70%;">Version: 0.38a</span><br><!--span class="yellow_text yellow_text_shadow" id='emergence' style="font-size: 70%;">Emergency export</span--></div>
+			</div>
+				
+			<div id="topbar" class="menu">
+				<p id="topbar_content">
+					<span class="white_text">Year: </span><span class="blue_text">0</span>
+					<span class="white_text">Day: </span><span class="blue_text">0</span>
+				</p>
+				<p id="topbar_info"><span id="topbar_rank" style='cursor:pointer;'></span> <span id="topbar_name" class="white_text" style='cursor:pointer;'></span><br><span id="topbar_year"></span></p>
+				<img id="topbar_line" src="ui/topbarLine.png" />
+				<img id="pause_button" src="ui/pause.png" style='position:absolute;top:6px;right:2%;width:32px;height:32px;cursor:pointer;z-index:1000;' />
+                <div style="position:relative;height:100%;">
+                    <!--img id="menu_icon" src='ui/menu.png' style='cursor:pointer;position:absolute;left:4px;top:0;bottom:0;margin:auto;height:80%;' /-->
+                </div>
+				
+				    <div id="top_build_menu">
+                        <img id="b_fleet_icon" src="ui/military.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_map_icon" src="ui/map.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_research_icon" src="ui/research.png" class='icon' style='cursor:pointer;'/>
+                        <!--img id="b_achievements_icon" src="ui/achiv.png" class='icon' style='cursor:pointer;'/-->
+                        <img id="b_diplomacy_icon" src="ui/diplomacy.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_tournament_icon" src="ui/tour.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_select_icon" src="img/promision/promision.png" class='icon' style='cursor:pointer;'/>
+                    </div>
+				
+			</div>
+			
+			<div id="downbar" class="menu">
+                <img id="downbar_line" src="ui/topbarLine.png" />
+                <div id="downbar_wrapper">
+                    <div id="downbar_content">
+                        <span class="white_text"> </span><span class="blue_text">0 (+0/sec)</span>
+                    </div>
+                    
+					                                  
+                    <div id="bottom_build_menu">
+                        <img id="b_extraction_icon" src="ui/extraction.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_production_icon" src="ui/production.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_energy_icon" src="ui/energy.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_res_icon" src="ui/dna.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_shipyard_icon" src="ui/ship.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_market_icon" src="ui/coin.png" class='icon' style='cursor:pointer;'/>
+                        <img id="b_other_icon" src="ui/loading.png" class='icon' style='cursor:pointer;'/>
+                    </div>
+					
+					
+					<div id='nebula_name' class='blue_text text_shadow' style='z-index:28;font-size:120%; position:absolute; width:1200px; top:-3px;text-align:center;float:left;'>
+					</div>
+					
+                    <div id="icon_cont">
+                        <!--img id="achievement_icon" src="ui/military.png" class='icon' style='cursor:pointer;'/-->
+                        <!--img id="settings_icon" src="ui/settings.png" class='icon' style='cursor:pointer;'/-->
+                        <img id="save_icon" src="ui/save.png" class='icon' style='cursor:pointer;'/>
+                        <img id="export_icon" src="ui/export.png" class='icon' style='cursor:pointer;'/>
+                        <img id="info_icon" src="ui/tuto.png" class='icon' style='cursor:pointer;'/>
+                        <img id="tutorial_icon" src="ui/t.png" class='icon' style='cursor:pointer;'/>
+                        <img id="ads_icon" src="ui/ad.png" class='icon' style='cursor:pointer;'/>
+                    </div>
+                </div>
+			</div>
+			
+			<div id="settings_interface" class="interface">
+				<span class='blue_text' style='position: absolute; top: 8px; float:left; text-align:center; font-size:120%; width:500px'>Settings</span>
+				<div id="settings_fields" style='position:absolute; top:32px; left:16px;'>
+					<span class='blue_text'>Autosave <input type="checkbox" id="autosave_check" value=""/></span><br><br>
+					<span class='blue_text'>Sound <input type="checkbox" id="sound_check" value=""/></span><br>
+					<span class='blue_text'>Music <input type="checkbox" id="music_check" value=""/></span><br><br>
+					<span class='blue_text' style='color: #f00; cursor: pointer;' onClick='javascript:wipeData(); loadReset();'>Wipe Data</span>
+					<span class='blue_text' id="settings_save" style="float:left;width:500px;text-align:center;cursor:pointer;">Save settings</span>
+				</div>
+			</div>
+			
+			<div id="permanent_menu" class="interface" style="position:relative;">
+                <div id="col0" style='height:100%;width:50%;position:absolute;left:0%;'>
+                    <div id='planet_list_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Empire</span>
+                        <img src='ui/empire.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                    <div id='ship_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Fleet</span>
+                        <img src='ui/military.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                </div>
+                <div id="col1" style='height:100%;width:50%;position:absolute;left:50%;'>
+                    <div id='research_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Research</span>
+                        <img src='ui/research.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                    <div id='map_button' class="block_menu"  style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Map</span>
+                        <img src='ui/map.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                </div>
+                <!--div id="col2" style='height:100%;width:33.33%;position:absolute;left:66.66%;'>
+                    <div id='diplomacy_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Diplomacy</span>
+                        <img src='ui/quest.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                    <div id='achievements_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;"></span>
+                        <span class='white_text' style="font-size:200%;width:100%;position:absolute;left:0;top:50%;;width:100%;height:100%;text-align:center;float:left;">Achievements</span>
+                        <img src='ui/loading.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                </div-->
+			</div>
+			
+			<div id="building_selection_interface" class="interface" style="position:relative;">
+                <div id="b_col0" style='height:100%;width:33.33%;position:absolute;left:0%;'>
+                    <div id='extraction_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Extraction</span>
+                        <img src='ui/extraction.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                    <div id='shipyard_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Shipyard</span>
+                        <img src='ui/ship.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                </div>
+                <div id="b_col1" style='height:100%;width:33.33%;position:absolute;left:33.33%;'>
+                    <div id='production_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Production</span>
+                        <img src='ui/production.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                    <div id='defence_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;"></span>
+                        <img id='building_selection_planet_icon' src='ui/defence.png' style='position:absolute;left:0;top:5%;height:90%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                </div>
+                <div id="b_col2" style='height:100%;width:33.33%;position:absolute;left:66.66%;'>
+                    <div id='energy_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Energy</span>
+                        <img src='ui/energy.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                    <div id='other_button' class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Other</span>
+                        <img src='ui/loading.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                </div>
+                <!--div id="b_col2" style='height:100%;width:33.33%;position:absolute;left:66.66%;'>
+                    <div id='map_button' class="block_menu"  style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Map</span>
+                        <img src='ui/map.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                    <div class="block_menu" style="position:relative;">
+                        <span class='blue_text' style="font-size:200%;width:100%;height:100%;text-align:center;float:left;">Market</span>
+                        <span class='white_text' style="width:100%;height:100%;text-align:center;float:left;">Coming soon...</span>
+                        <img src='ui/loading.png' style='position:absolute;left:0;top:20%;height:60%;right:0;bottom:0;margin: auto;' />
+                    </div>
+                </div-->
+			</div>
+			
+			<div id="shipyard_interface" class="interface">
+				<div id="shipyard_list_container">
+					<ul id="shipyard_list">
+					</ul>
+				</div>
+				<div id="shipyard_mini" class="menu">
+					<img id="shipyard_arrow_mini_left" src="ui/arrow_small_left.png" style="position:absolute;top:16px;width:24px;height:24px;left:16px;top:88px;z-index:100;cursor:pointer;"/>
+					<img id="shipyard_arrow_mini_right" src="ui/arrow_small.png" style="position:absolute;top:16px;width:24px;height:24px;left:168px;top:88px;z-index:100;cursor:pointer;"/>
+					<span id="shipyard_mini_name" class='blue_text'></span>
+					<img id="shipyard_mini_image">
+					<ul id="shipyard_mini_list">
+						
+					</ul>
+					<ul id ="shipyard_info_placeholder" style="height:980px;">
+					</ul>
+				</div>
+				<div id="shipyard_info" class="menu">
+					<span id="shipyard_info_name" class='blue_text'></span>
+					<ul id="shipyard_info_list">
+					
+					</ul>
+					<ul id ="shipyard_info_placeholder" style="height:980px;">
+					</ul>
+				</div>
+			</div>
+			
+			<div id="diplomacy_interface" class="interface">
+				<div id="diplomacy_list_container">
+					<ul id="diplomacy_list">
+					</ul>
+				</div>
+				<div id="diplomacy_mini" class="menu">
+					<ul id="diplomacy_mini_list">
+					</ul>
+					<ul id ="diplomacy_info_placeholder" style="height:920px;">
+					</ul>
+				</div>
+			</div>
+			
+			<div id="market_interface" class="interface">
+				<div id="market_list_container">
+					<ul id="market_list">
+					</ul>
+				</div>
+				<div id="market_mini" class="menu">
+					<img id="market_arrow_mini_left" src="ui/arrow_small_left.png" style="position:absolute;top:16px;width:24px;height:24px;left:16px;top:88px;z-index:100;cursor:pointer;"/>
+					<img id="market_arrow_mini_right" src="ui/arrow_small.png" style="position:absolute;top:16px;width:24px;height:24px;left:168px;top:88px;z-index:100;cursor:pointer;"/>
+					<span id="market_mini_name" class='blue_text'></span>
+					<img id="market_mini_image">
+					<ul id="market_mini_list">
+						
+					</ul>
+					<ul id ="market_info_placeholder" style="height:1024px;">
+					</ul>
+				</div>
+				<div id="market_info" class="menu">
+					<span id="market_info_name" class='blue_text'></span>
+					<ul id ="market_info_placeholder" style="height:200px;">
+					</ul>
+				</div>
+			</div>
+			
+			<div id="planet_building_interface" class="interface">
+				<div id="building_list_container">
+					<ul id="building_list">
+					</ul>
+				</div>
+				<div id="planet_mini" class="menu">
+					<img id="arrow_mini_left" src="ui/arrow_small_left.png" style="position:absolute;top:16px;width:24px;height:24px;left:16px;top:88px;z-index:100;cursor:pointer;"/>
+					<img id="arrow_mini_right" src="ui/arrow_small.png" style="position:absolute;top:16px;width:24px;height:24px;left:168px;top:88px;z-index:100;cursor:pointer;"/>
+					<span id="planet_mini_name" class='blue_text'></span>
+					<img id="planet_mini_image">
+					<ul id="mini_list">
+						
+					</ul>
+					<ul id ="info_mini_placeholder" style="height:1024px;">
+					</ul>
+				</div>
+				<div id="building_info" class="menu">
+					<span id="building_info_name" class='blue_text'></span>
+					<ul id="building_info_list">
+						
+					</ul>
+					<ul id ="building_info_placeholder" style="height:600px;">
+					</ul>
+				</div>
+			</div>
+			
+			<div id="planet_interface" class ="interface">
+				<div id="planet_view">
+					<img id="arrow_left" src="ui/arrow_small_left.png" style="position:absolute;top:16px;width:48px;height:48px;left:27%;top:45%;z-index:1;cursor:pointer;"/>
+					<img id="arrow_right" src="ui/arrow_small.png" style="position:absolute;top:16px;width:48px;height:48px;right:27%;top:45%;z-index:1;cursor:pointer;"/>
+					<img id="planet_visualizer" src="ui/void.png" usemap='#planet_visualizer_map' style="top:16px;"/>
+					<!--map name="planet_visualizer_map" id="planet_click_map">
+						<area shape='circle' coords='256,256,180' href='javascript:currentPlanetClicker();'>
+					</map-->
+					<!--<div id='planet_places'></div-->
+					<div id='planet_places'></div>
+					<div id='civis_name' class='blue_text text_shadow' style='z-index:28;font-size:120%; position:absolute; width:1024px; top:50px;text-align:center;float:left;'>
+					</div>
+				</div>
+				<div id="planet_info" class="menu">
+					<ul id="info_list">
+
+					</ul>
+					<ul id ="info_list_placeholder" style="height:880px;">
+					</ul>
+				</div>
+				<div id="planet_info2" class="menu">
+					<ul id="info_list2">
+
+					</ul>
+					<ul id ="info_list2_placeholder" style="height:880px;">
+					</ul>
+				</div>
+			</div>
+			
+			<div id="planet_selection_interface" class="interface">
+				<ul id="planet_list">
+					
+				</ul>
+			</div>
+			
+			<div id="research_interface" class="interface">
+				<ul id="research_list">
+					
+				</ul>
+			</div>
+			
+			<div id="ship_interface" class="interface">
+				<div id="ship_list_container">
+					<ul id="ship_list">
+					</ul>
+				</div>
+				<div id="ship_mini" class="menu">
+					<span id="ship_mini_name" class='blue_text'></span>
+					<!--img id="ship_mini_image"-->
+					<ul id="ship_mini_list">
+						
+					</ul>
+					<ul id ="ship_info_placeholder" style="height:880px;">
+					</ul>
+				</div>
+				<div id="ship_info" class="menu">
+					<span id="ship_info_name" class='blue_text'></span>
+					<ul id="ship_info_list">
+						
+					</ul>
+					<ul id ="ship_infolist_placeholder" style="height:1024px;">
+					</ul>
+				</div>
+			</div>
+			
+			<div id="map_selection_interface" class="interface">
+				<ul id="map_list">
+					
+				</ul>
+			</div>
+			
+			<div id="map_interface">
+				<div id="map_container">
+					<img id="map_image" src='ui/void.png' />
+					<div id="map_icon_container">
+						
+					</div>
+				</div>
+			</div>
+			
+			<div id="tech_interface">
+				<div id="tech_container">
+					<div id="tech_t_container">
+					
+					</div>
+				</div>
+			</div>
+			
+			<div id="quest_interface" class="interface">
+				<ul id="quest_list">
+					
+				</ul>
+			</div>
+			
+			<div id="profile_interface" class="interface">
+				<ul id="profile_info_list">
+					
+				</ul>
+			</div>
+		</div>
+		
+		<script>
+		
+		function testAdsAvailable() {
+			adsAvailable = true;
+			$("#ads_icon").show();
+		}
+		
+		function testAdsUnavailable() {
+			adsAvailable = false;
+			$("#ads_icon").hide();
+		}
+		
+		function testAdOpened() {
+			var pop = new exportPopup(320,64,"<span class='blue_text' style='font-size:110%'>An ad is being displayed!</span>","Ok");
+			pop.draw();
+		}
+		
+		function testAdCompleted() {
+			game.idleTime += 60*60; //2 hours
+			clearTimeout(idleTimeout);
+			setBon();
+			var pop = new exportPopup(320,64,"<span class='green_text' style='font-size:110%'>Added 1 hour of idle time. You new idle bonus is x"+Math.floor(100*idleBon)/100+"!</span>","Ok");
+			pop.draw();
+		}
+
+		function testAdAbandoned() {
+			var pop = new exportPopup(320,64,"<span class='red_text' style='font-size:110%'>You closed the ad!</span>","Ok");
+			pop.draw();
+		}
+        // Load the API
+		var userID = 0;
+		var userName = "";
+        var LoadingAPI = !window.location.protocol.startsWith("file");
+        if (!LoadingAPI) onComplete();
+        else kongregateAPI.loadAPI(onComplete);
+        // Callback function
+        function onComplete()
+        {
+			kongregate = kongregateAPI.getAPI();
+			userName = kongregate.services.getUsername();
+			$("#topbar_name").html(userName);
+			userID = kongregate.services.getUserId();
+
+			kongregate.services.addEventListener('login', function(){
+				userName = kongregate.services.getUsername();
+				$("#topbar_name").html(userName);
+				userID = kongregate.services.getUserId();
+			});
+			
+			kongregate.mtx.addEventListener("adsAvailable", function() {
+				testAdsAvailable();
+			});
+
+			kongregate.mtx.addEventListener("adsUnavailable", function() {
+				testAdsUnavailable();
+			});
+
+			kongregate.mtx.addEventListener("adOpened", function() {
+				testAdOpened();
+			});
+
+			kongregate.mtx.addEventListener("adCompleted", function() {
+				testAdCompleted();
+			});
+
+			kongregate.mtx.addEventListener("adAbandoned", function() {
+				testAdAbandoned();
+			});
+
+			kongregate.mtx.initializeIncentivizedAds();
+				
+			console.log("Loading Game....");
+			submitNumber(1);
+        }
+		
+		function submitNumber(name,value) {
+			//console.log("[Submit] "+value);
+			if (kongregate) {
+				console.log("[kong] "+kongregate);
+				kongregate.stats.submit(name, value);
+			}
+		}
+		
+		function showAds() {
+			kongregate.mtx.showIncentivizedAd();
+		}
+		</script>
+		
+	</body>
+</html>
