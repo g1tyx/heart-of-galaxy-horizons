@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="core/script/malihu/jquery.mCustomScrollbar.css" />
         <script type="text/javascript" src="core/script/jquery.min.js"></script>
         <script src="core/script/malihu/jquery.mCustomScrollbar.concat.min.js"></script>
-		<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+		<script src='kongregate_api.js'></script>
         <script type="text/javascript" src="core/script/change_log.js"></script>
         <script type="text/javascript" src="core/script/cfg.js"></script>
 		<script>var AG_GAME = false;</script>
@@ -37,8 +37,8 @@
         <title>星系核心:地平线 - Heart Of Galaxy : Horizons</title>
     </head>
     <body id="hog_game_body" ondragstart="return false;" ondrop="return false;">
-<script src="chs.js?202106041511"></script>
-<script src="//g8hh.com/zh/core.js"></script>
+<script src="chs.js"></script>
+<script src="core.js"></script>
 		<div id="main" style="background-image: url('ui/gridBackground.png');">
 			<div id="ver_info">
 			</div>
@@ -514,8 +514,8 @@
 		}
 		</script>
 <!--客服 开始-->
-<link rel="stylesheet" href="//g8hh.com/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
-<script src="//g8hh.com/static/js/kf.js"></script>
+<link rel="stylesheet" href="//g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.github.io/static/js/kf.js"></script>
 <!-- 客服 结束 -->
 <!--站长统计--> 
 <div style="display: none">
@@ -529,5 +529,17 @@ var _hmt = _hmt || [];
 })();
 </script>
     </div>
+	<style>
+		#building_info_list .blue_text, 
+		#building_info_list .red_text, 
+		#ship_info_list .blue_text,
+		#ship_info_list .red_text{
+			float: none !important;
+		}
+		#building_info_list div,
+		#ship_info_list div{
+			text-align: left;
+		}
+	</style>
 	</body>
 </html>
