@@ -587,7 +587,7 @@ var cnItems = {
     'Opponent Fleet': '敌方舰队',
     'Select a fleet': '选择一个舰队',
     'The Space Tournament': '太空锦标赛',
-    'Qasers Assembler': 'Qasers组装工',
+    'Qasers Assembler': '卡瑟斯组装工',
     'Resources cost': '资源成本',
     'Sell': '出售',
     'Sell Price (1000 units': '售价 (1000单位',
@@ -693,7 +693,7 @@ var cnItems = {
     "Methane Extractors": "甲烷提取器",
     "needs": "需要",
     "needs Ammonia": "需要氨",
-    "Oh no! The generator is now consuming 3 fuel per second! It may a be a good idea to temporarily turn off Foundries. Click on": "不好了！发电机现在每秒消耗 3 燃料！暂时关闭 Foundries 可能是个好主意。点击",
+    "Oh no! The generator is now consuming 3 fuel per second! It may a be a good idea to temporarily turn off Foundries. Click on": "不好了！发电机现在每秒消耗 3 燃料！暂时关闭 铸造厂 可能是个好主意。点击",
     "that in turn produce": "反过来产生",
     "That's good! You can now produce fuel without running out of methane. You will need fuel to power": "那挺好的！您现在可以在不耗尽甲烷的情况下生产燃料。你需要燃料来供电",
     "the icon next to the Foundry": "铸造厂旁边的图标",
@@ -873,7 +873,7 @@ var cnPrefix = {
     "Steel: ": "钢: ",
     "Iron: ": "铁: ",
     "(needs ": "(需要  ",
-    "": "",
+    "- requested by queue": "- 由队列请求",
     "": "",
     "": "",
     "": "",
@@ -934,6 +934,7 @@ var cnExcludeWhole= [
     /^x?\d+(\.\d+)?[A-Za-z%]{0,2}(\s.C)?\s*$/,                                           //12.34K,23.4 °C
     /^x?\d+(\.\d+)?(e[+\-]?\d+)?\s*$/,                                          //12.34e+4
     /^([\d\.]+)$/,
+    /^([\d\.]+)K \(([\d\.]+)\%$/,
     /^\d+(\.\d+)?[A-Za-z]{0,2}.?\(?([+\-]?(\d+(\.\d+)?[A-Za-z]{0,2})?)?$/,    //12.34M (+34.34K
     /^(\d+(\.\d+)?[A-Za-z]{0,2}\/s)?.?\(?([+\-]?\d+(\.\d+)?[A-Za-z]{0,2})?\/s\stot$/,                         //2.74M/s (112.4K/s tot
     /^\d+(\.\d+)?(e[+\-]?\d+)?.?\(?([+\-]?(\d+(\.\d+)?(e[+\-]?\d+)?)?)?$/,         //2.177e+6 (+4.01+4
